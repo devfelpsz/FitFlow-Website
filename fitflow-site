@@ -1,6 +1,0 @@
-git init
-git add .
-git commit -m "Meu commit inicial"
-git branch -M main
-git remote add origin <https://fit-flow-website-nine.vercel.app>
-git push -u origin main
