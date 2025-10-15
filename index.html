@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge - Seu Personal Trainer e Nutricionista com IA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="header-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h1 class="card-title">FitForge</h1>
+                <p class="card-description">Seu Personal Trainer e Nutricionista com IA</p>
+            </div>
+            <div class="card-content">
+                <form id="fitness-form">
+                    <div class="form-section">
+                        <h2>Dados Pessoais</h2>
+                        <div class="form-grid">
+                            <div>
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" placeholder="Seu nome" required>
+                            </div>
+                            <div>
+                                <label for="age">Idade</label>
+                                <input type="number" id="age" placeholder="Ex: 25" required>
+                            </div>
+                            <div>
+                                <label for="weight">Peso (kg)</label>
+                                <input type="number" id="weight" placeholder="Ex: 70" required>
+                            </div>
+                            <div>
+                                <label for="height">Altura (cm)</label>
+                                <input type="number" id="height" placeholder="Ex: 175" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-section">
+                        <h2>Objetivos e Treino</h2>
+                        <div class="form-grid">
+                            <div>
+                                <label for="goal">Objetivo Principal</label>
+                                <select id="goal" required>
+                                    <option value="">Selecione seu objetivo</option>
+                                    <option value="perder-peso">Perder Peso</option>
+                                    <option value="ganhar-massa">Ganhar Massa Muscular</option>
+                                    <option value="manter-peso">Manter Peso</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="experience">Nível de Experiência</label>
+                                <select id="experience" required>
+                                    <option value="">Selecione seu nível</option>
+                                    <option value="iniciante">Iniciante</option>
+                                    <option value="intermediario">Intermediário</option>
+                                    <option value="avancado">Avançado</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="availability">Dias de Treino por Semana</label>
+                                <select id="availability" required>
+                                    <option value="">Quantos dias?</option>
+                                    <option value="3">3 dias</option>
+                                    <option value="4">4 dias</option>
+                                    <option value="5">5 dias</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="focusArea">Área de Foco (Opcional)</label>
+                                <input type="text" id="focusArea" placeholder="Ex: Glúteos, Abdômen">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-section">
+                        <h2>Preferências Alimentares</h2>
+                        <div class="form-grid">
+                            <div>
+                                <label for="mealPreference">Preferência Alimentar</label>
+                                <select id="mealPreference" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="tradicional">Tradicional</option>
+                                    <option value="low-carb">Low Carb</option>
+                                    <option value="vegetariano">Vegetariano</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="dietaryRestrictions">Restrições Alimentares (Opcional)</label>
+                                <input type="text" id="dietaryRestrictions" placeholder="Ex: Lactose, Glúten">
+                            </div>
+                            <div>
+                                <label for="cookingTime">Tempo Disponível para Cozinhar</label>
+                                <select id="cookingTime" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="pouco">Pouco (até 30 min)</option>
+                                    <option value="moderado">Moderado (30-60 min)</option>
+                                    <option value="muito">Muito (mais de 60 min)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="budget">Orçamento para Alimentação</label>
+                                <select id="budget" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="baixo">Baixo</option>
+                                    <option value="medio">Médio</option>
+                                    <option value="alto">Alto</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="generate-plan-btn" class="btn-primary">
+                        <i class="fas fa-bullseye"></i>
+                        Gerar Meu Plano Personalizado
+                    </button>
+                </form>
+
+                <div id="results-section" class="hidden">
+                    <div class="results-header">
+                        <p class="results-subtitle">Seu plano personalizado está pronto!</p>
+                        <div class="success-message">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="generated-for-user"></span>
+                        </div>
+                    </div>
+
+                    <div class="tabs">
+                        <div class="tab-list">
+                            <button class="tab-trigger active" data-tab="workout">
+                                <i class="fas fa-dumbbell"></i>
+                                Treino
+                            </button>
+                            <button class="tab-trigger" data-tab="diet">
+                                <i class="fas fa-apple-alt"></i>
+                                Dieta
+                            </button>
+                        </div>
+
+                        <div id="workout-tab" class="tab-content active">
+                            <div class="card-results">
+                                <div class="card-header-results workout-header">
+                                    <h3 class="card-title-results"><i class="fas fa-dumbbell"></i> <span id="workout-plan-name"></span></h3>
+                                    <p class="card-description-results">Plano personalizado baseado na sua disponibilidade e objetivos</p>
+                                </div>
+                                <div class="card-content-results" id="workout-plan-details">
+                                    <!-- Workout plan details will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="diet-tab" class="tab-content hidden">
+                            <div class="card-results">
+                                <div class="card-header-results diet-header">
+                                    <h3 class="card-title-results"><i class="fas fa-apple-alt"></i> Plano de Dieta</h3>
+                                    <p class="card-description-results"><span id="diet-plan-calories"></span> calorias diárias</p>
+                                </div>
+                                <div class="card-content-results" id="diet-plan-details">
+                                    <!-- Diet plan details will be injected here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="generate-new-plan-btn" class="btn-outline">
+                        Gerar Novo Plano
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
